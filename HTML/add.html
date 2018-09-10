@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no,
+    initial-scale=1.0,maximum-scale=1.0">
+    <title>Add</title>
+    <script src="https://cdn.bootcss.com/jquery/1.10.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_791282_td05uavhacp.css">
+    <link rel="stylesheet" href="/assets/css/add.css">
+    <link rel="stylesheet" href="/assets/css/rem.css">
+</head>
+<body>
+<header>
+       <a href="/index.php?c=page&m=index"><span>〈</span></a>
+       <span style="font-size: 0.28rem ; font-weight: bolder">频道管理</span>
+</header>
+
+<div class="box">
+    <span class="controlTitle">点击删除以下频道</span>
+    <ul class="controlDetail up">
+        <?php foreach($add as $k=>$v){?>
+        <?php if ($v['is_default']==1){?>
+        <li id="<?php echo $v['id']?>" data-id="<?php echo $v['is_default']?>"><?php echo $v['name']?><?php echo $v['is_default']?></li>
+        <?php } ?>
+        <?php } ?>
+    </ul>
+</div>
+<div class="box">
+    <span class="controlTitle add">点击添加以下频道</span>
+    <ul class="controlDetail down">
+        <?php foreach($add as $k=>$v){?>
+        <?php if ($v['is_default']==0){?>
+        <li id="<?php echo $v['id']?>" data-id="<?php echo $v['is_default']?>"><?php echo $v['name']?><?php echo $v['is_default']?></li>
+        <?php } ?>
+        <?php } ?>
+    </ul>
+</div>
+<!--<script>-->
+    <!--$(function () {-->
+        <!--$("li").click(function (v) {-->
+           <!--var  val=$("li").text()-->
+            <!--console.log(val)-->
+
+            <!--// if (is_default==1){-->
+            <!--//     is_default==0;-->
+            <!--// } else {-->
+            <!--//     is_default==1-->
+            <!--// }-->
+        <!--})-->
+    <!--})-->
+
+<!--</script>-->
+<script>
+    $(function () {
+        // let top=$('#ul-del');
+        //
+        // let bottom=$('#ul-add');
+        //
+        $('li').each(function (k,v) {
+            if ($(v).attr('data-id')==0){
+                $(v).appendTo('.down');
+                console.log('data-id')
+            }else if($(v).attr('data-id')==1){
+                $(v).appendTo('.up');
+            }
+        });
+        $('.up').on('click','li',function (v) {
+
+            console.log($(this).attr('data-id'))
+
+            $.ajax({
+        url:'/index.php?c=page&m=move',
+        data:{
+            is_default:0,
+            id:$(this).attr('id')
+        },
+        success(data){
+            location.reload();
+
+        }
+
+    })
+
+
+        });
+        $('.down').on('click','li',function (v) {
+            console.log($(this).attr('data-id'))
+
+            $.ajax({
+                url:'/index.php?c=page&m=move',
+                data:{
+                    is_default:1,
+                    id:$(this).attr('id')
+                },
+                success(data){
+                    location.reload();
+
+                }
+
+            })
+        });
+    })
+</script>
+</body>
+</html>

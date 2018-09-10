@@ -1,0 +1,97 @@
+
+
+
+<?php include("header.html")?>
+
+<div class="app-search">
+    <form action="/admin.php">
+        <div class="input-group">
+            <input  type="hidden" name="c" value="News">
+            <input type="hidden" name="m" value="search">
+            <input type="text" class="form-control" name="cid" placeholder="Search...">
+            <span class="mdi mdi-magnify"></span>
+            <div class="input-group-append">
+             <button class="btn btn-primary" type="submit">Search</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<table class="table table-centered mb-0 " style="overflow-x:auto ; width: 200px">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>cid</th>
+        <th>title</th>
+        <th>dsc</th>
+        <th>image</th>
+        <th>url</th>
+        <th>create_time</th>
+        <th>content</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <?php foreach ($rows as $k => $v) { ?>
+    <tr data-id="<?php  echo $v['id'] ?>">
+        <td ><?php  echo $v["id"] ?></td>
+        <td ><?php  echo $v["cid"] ?></td>
+        <td><input data-type="title" type="text" id="title" value=" <?php  echo $v['title'] ?>" style="border: none"> </td>
+        <td><input data-type="dsc" type="text" id="dsc" value=" <?php  echo $v['dsc'] ?>" style="border: none"> </td>
+
+        <td><input data-type="image" type="text" id="image" value=" <?php  echo $v['image'] ?>" style="border: none"> </td>
+        <td><input data-type="url" type="text" id="url" value=" <?php  echo $v['url'] ?>" style="border: none"> </td>
+        <td><input data-type="create_time" type="text" id="create_time" value=" <?php  echo $v['create_time'] ?>" style="border: none"> </td>
+
+        <td><input data-type="content" type="text"  id="content" value=" <?php  var_dump( $v['content']) ?>" style="border: none"> </td>
+        <td>
+            <button type="button" class="remove btn btn-outline-danger btn-rounded">Danger</button>
+        </td>
+    </tr>
+
+    <?php } ?>
+    </tbody>
+</table>
+<div style="display: flex ; justify-content: space-between">
+    <button type="button" class="submit btn btn-primary btn-rounded" style="height: 44px ;width: 100px">添加</button>
+
+    总条数是：
+
+    <?php echo $num ?>
+    <!--<?php echo $count ?>-->
+    <ul id="pagination-demo" class="pagination-sm" style="width: 500px;height: 50px; margin-bottom: 0"></ul>
+
+</div>
+<script>
+    $(function () {
+        $(".form-control").submit(function () {
+            var  find=$(".form-control").val()
+            if ( find==$cid){
+             location.href="admin.php?c=News&m=select&cid="+find
+        }
+        })
+    })
+
+</script>
+
+
+<script src="/assets2/piblic/admins.js"></script>
+<script>
+
+    $(
+        function () {
+            $('#pagination-demo').twbsPagination({
+                totalPages: <?php echo $count?>,
+            visiblePages: 5,
+                onPageClick: function (event, page) {
+                $('#page-content').text('Page ' + page);
+
+            }
+
+        });
+        }
+    )
+</script>
+
+<?php include("footer.html")?>

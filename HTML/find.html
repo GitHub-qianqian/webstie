@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no,
+    initial-scale=1.0,maximum-scale=1.0">
+    <title>Add</title>
+    <script src="https://cdn.bootcss.com/jquery/1.9.0/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_791282_td05uavhacp.css">
+    <link rel="stylesheet" href="/assets/css/add.css">
+    <link rel="stylesheet" href="/assets/css/find.css">
+    <link rel="stylesheet" href="/assets/css/rem.css">
+
+</head>
+<body>
+<div class="head">
+<header>
+    <a href="/index.php?c=page&m=index"><span>〈</span></a>
+    <span style="font-size: 0.28rem ; font-weight: bolder">频道管理</span>
+</header>
+
+<form class="box" action="/index.php">
+        <input  type="hidden" name="c" value="page">
+        <input type="hidden" name="m" value="search">
+        <input class="input" type="text" name="wd" >
+        <button type="submit">搜索</button>
+
+</form>
+
+</div>
+
+<?php if( $total_number == 0 ){ ?>
+   <div class="sorry">抱歉 没有找到你想要的结果</div>
+<?php } ?>
+
+
+<?php if( $total_number != 0 ){ ?>
+<div class="sorry" style="color: #333333">共 <?php  echo $total_number ?>条结果</div>
+<?php } ?>
+
+<?php foreach($result as $k => $v ){ ?>
+<div class="one">
+    <div class="one-left">
+        <p >
+            <?php echo $v['title'] ?>
+        </p>
+        <span class="zhiding"> 置顶</span>
+        <span>评论 98条</span>
+        <span>市南科普在线</span>
+
+    </div>
+    <div class="one-right">
+        <img src="<?php echo $v['image']?>" alt="">
+    </div>
+</div>
+
+<?php } ?>
+
+
+<?php if ( $total_number > 4 ){ ?>
+<button id="more">加载更多</button>
+<?php } ?>
+
+
+</body>
+<script>
+    var page = 1;
+    $(function () {
+        $('#more').click(function () {
+            $.ajax({
+                url:'/index.php?c=page&m=news&wd=<?php echo $wd ?>&page=' + ( page + 1 ),
+                success:function (data) {
+                    page = page + 1;
+                    data = JSON.parse(data);
+                    if(data.length){
+                        data.forEach(v=>{
+                            $a=v.title
+
+                            // $(`<div class="one"> ${v.title}</div> `).appendTo("body")
+
+                            $("<div class='one'></div>").appendTo("body")
+                            $(`<p ></p>`).addClass("write").append($a).appendTo("body")
+                            console.log(v.title)
+                            $('#more').remove();
+                        })
+                    }else{
+                        alert('没有更多');
+                        $('#more').remove();
+                    }
+                    console.log(data);
+                    console.log(page);
+
+                }
+            })
+        })
+    })
+</script>
+
+</html>

@@ -1,0 +1,330 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+    <title>管理系统</title>
+
+
+    <script src="https://cdn.bootcss.com/jquery/1.9.0/jquery.min.js"></script>
+
+
+    <link href="/assets/css/vendor/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/icons.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/app.min.css" rel="stylesheet" type="text/css">
+    <script src="/assets/js/pages/demo.dashboard.js"></script>
+    <script src="/assets/js/vendor/Chart.bundle.min.js"></script>
+    <script src="/assets/js/vendor/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="/assets/js/vendor/jquery-jvectormap-world-mill-en.js"></script>
+
+
+</head>
+<body>
+<div class="wrapper">
+
+    <!-- ========== Left Sidebar Start ========== -->
+    <div class="left-side-menu active">
+
+        <div class="slimScrollDiv in" style="position: relative; overflow: hidden; width: auto; height: 207px;"><div class="slimscroll-menu active" style="overflow: hidden; width: auto; height: 207px;">
+
+            <!-- LOGO -->
+            <a href="/admin.php?c=News&m=view" class="logo text-center active">
+                        <span class="logo-lg">
+                            <img src="/assets/images/logo.png" alt="" height="16">
+                        </span>
+                <span class="logo-sm">
+                            <img src="/assets/images/logo_sm.png" alt="" height="16">
+                        </span>
+            </a>
+
+            <!--- Sidemenu -->
+            <ul class="metismenu side-nav in">
+
+                <li class="side-nav-title side-nav-item">Navigation</li>
+
+                <li class="side-nav-item active">
+                    <a href="/admin.php?c=News&m=view" class="side-nav-link active">
+                        <i class="dripicons-meter"></i>
+                        <span class="badge badge-success float-right">7</span>
+                        <span> Dashboard </span>
+                    </a>
+                </li>
+
+                <li class="side-nav-item">
+                    <a href="javascript: void(0);" class="side-nav-link">
+                        <i class="dripicons-browser"></i>
+                        <span> 热点资讯 </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="side-nav-second-level collapse" aria-expanded="false">
+                        <li>
+                            <a href="/admin.php?c=News&m=views">最近热点</a>
+                        </li>
+                        <li>
+                            <a href="layouts-light-sidenav.html">Light Sidenav</a>
+                        </li>
+                        <li>
+                            <a href="layouts-collapsed.html">Collapsed Sidenav</a>
+                        </li>
+                        <li>
+                            <a href="javascript: void(0);" class="right-bar-toggle">Right Sidebar</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="side-nav-title side-nav-item mt-1">Components</li>
+
+                <li class="side-nav-item">
+                    <a href="javascript: void(0);" class="side-nav-link">
+                        <i class="dripicons-briefcase"></i>
+                        <span> 新闻管理 </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="side-nav-second-level collapse" aria-expanded="false">
+                        <li>
+                            <a href="ui-cards.html">Cards</a>
+                        </li>
+                        <li>
+                            <a href="ui-buttons.html">Buttons</a>
+                        </li>
+                        <li>
+                            <a href="ui-modals.html">Modals</a>
+                        </li>
+                        <li>
+                            <a href="ui-tabs.html">Tabs</a>
+                        </li>
+
+                    </ul>
+                </li>
+
+            </ul>
+
+            <!-- Help Box -->
+            <div class="help-box text-white text-center">
+                <a href="javascript: void(0);" class="float-right close-btn text-white">
+                    <i class="mdi mdi-close"></i>
+                </a>
+                <img src="/assets/images/help-icon.svg" height="90" alt="Helper Icon Image">
+                <h5 class="mt-3">Unlimited Access</h5>
+                <p class="mb-3">Upgrade to plan to get access to unlimited reports</p>
+                <a href="javascript: void(0);" class="btn btn-outline-light btn-sm">Upgrade</a>
+            </div>
+            <!-- end Help Box -->
+            <!-- End Sidebar -->
+
+            <div class="clearfix"></div>
+
+        </div><div class="slimScrollBar" style="background: rgb(158, 165, 171); width: 8px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 39.3471px;"></div><div class="slimScrollRail" style="width: 8px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+        <!-- Sidebar -left -->
+
+    </div>
+    <!-- Left Sidebar End -->
+
+    <!-- ============================================================== -->
+    <!-- Start Page Content here -->
+    <!-- ============================================================== -->
+
+    <div class="content-page">
+        <div class="content">
+
+            <!-- Topbar Start -->
+            <div class="navbar-custom">
+                <ul class="list-unstyled topbar-right-menu float-right mb-0">
+
+                    <li class="dropdown notification-list">
+                        <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                            <i class="dripicons-bell noti-icon"></i>
+                            <span class="noti-icon-badge"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-lg">
+
+                            <!-- item-->
+                            <div class="dropdown-item noti-title">
+                                <h5 class="m-0">
+                                            <span class="float-right">
+                                                <a href="javascript: void(0);" class="text-dark">
+                                                    <small>Clear All</small>
+                                                </a>
+                                            </span>Notification
+                                </h5>
+                            </div>
+
+                            <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 456px;"><div class="slimscroll" style="max-height: 230px; overflow: hidden; width: auto; height: 456px;">
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <div class="notify-icon bg-primary">
+                                        <i class="mdi mdi-comment-account-outline"></i>
+                                    </div>
+                                    <p class="notify-details">Caleb Flakelar commented on Admin
+                                        <small class="text-muted">1 min ago</small>
+                                    </p>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <div class="notify-icon bg-info">
+                                        <i class="mdi mdi-account-plus"></i>
+                                    </div>
+                                    <p class="notify-details">New user registered.
+                                        <small class="text-muted">5 hours ago</small>
+                                    </p>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <div class="notify-icon">
+                                        <img src="/assets/images/users/avatar-2.jpg" class="img-fluid rounded-circle" alt=""> </div>
+                                    <p class="notify-details">Cristina Pride</p>
+                                    <p class="text-muted mb-0 user-msg">
+                                        <small>Hi, How are you? What about our next meeting</small>
+                                    </p>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <div class="notify-icon bg-primary">
+                                        <i class="mdi mdi-comment-account-outline"></i>
+                                    </div>
+                                    <p class="notify-details">Caleb Flakelar commented on Admin
+                                        <small class="text-muted">4 days ago</small>
+                                    </p>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <div class="notify-icon">
+                                        <img src="/assets/images/users/avatar-4.jpg" class="img-fluid rounded-circle" alt=""> </div>
+                                    <p class="notify-details">Karen Robinson</p>
+                                    <p class="text-muted mb-0 user-msg">
+                                        <small>Wow ! this admin looks good and awesome design</small>
+                                    </p>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <div class="notify-icon bg-info">
+                                        <i class="mdi mdi-heart"></i>
+                                    </div>
+                                    <p class="notify-details">Carlos Crouch liked
+                                        <b>Admin</b>
+                                        <small class="text-muted">13 days ago</small>
+                                    </p>
+                                </a>
+                            </div><div class="slimScrollBar" style="background: rgb(158, 165, 171); width: 8px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px; height: 138.482px;"></div><div class="slimScrollRail" style="width: 8px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+
+                            <!-- All-->
+                            <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
+                                View All
+                            </a>
+
+                        </div>
+                    </li>
+
+                    <li class="dropdown notification-list">
+                        <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                    <span class="account-user-avatar">
+                                        <img src="/assets/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
+                                    </span>
+                            <span>
+                                        <span class="account-user-name">Dominic Keller</span>
+                                        <span class="account-position">Founder</span>
+                                    </span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown ">
+                            <!-- item-->
+                            <div class=" dropdown-header noti-title">
+                                <h6 class="text-overflow m-0">Welcome !</h6>
+                            </div>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <i class="mdi mdi-account-circle"></i>
+                                <span>My Account</span>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <i class="mdi mdi-account-settings-variant"></i>
+                                <span>Settings</span>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <i class="mdi mdi-lifebuoy"></i>
+                                <span>Support</span>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <i class="mdi mdi-lock-outline"></i>
+                                <span>Lock Screen</span>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <i class="mdi mdi-logout"></i>
+                                <span>Logout</span>
+                            </a>
+
+                        </div>
+                    </li>
+
+                </ul>
+                <button class="button-menu-mobile open-left disable-btn">
+                    <i class="mdi mdi-menu"></i>
+                </button>
+
+                <h4 class="page-title" style="padding-top: 30px">Dashboard</h4>
+
+            </div>
+
+            <!-- end Topbar -->
+
+            <!-- Start Content-->
+            <div class="container-fluid">
+
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <div class="page-title-right">
+                                <form class="form-inline">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control form-control-light" id="dash-daterange">
+                                            <div class="input-group-append">
+                                                        <span class="input-group-text bg-primary border-primary text-white">
+                                                            <i class="mdi mdi-calendar-range font-13"></i>
+                                                        </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="javascript: void(0);" class="btn btn-primary ml-2">
+                                        <i class="mdi mdi-autorenew"></i>
+                                    </a>
+                                    <a href="javascript: void(0);" class="btn btn-primary ml-1">
+                                        <i class="mdi mdi-filter-variant"></i>
+                                    </a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+                <!--<div class="app-search">-->
+                    <!--<form>-->
+                        <!--<div class="input-group">-->
+                            <!--<input type="text" class="form-control" placeholder="Search...">-->
+                            <!--<span class="mdi mdi-magnify"></span>-->
+                            <!--<div class="input-group-append">-->
+                                <!--<button class="btn btn-primary" type="submit">Search</button>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</form>-->
+                <!--</div>-->

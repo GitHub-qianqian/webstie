@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no,
+    initial-scale=1.0,maximum-scale=1.0">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_791282_td05uavhacp.css">
+    <link rel="stylesheet" href="/assets/css/rem.css">
+    <link rel="stylesheet" href="/assets/css/toytiao.css">
+</head>
+<body >
+<header>
+    <i class="iconfont icon-xinfengyoujian"></i>
+    <p>
+        <span>今日头条</span>
+        <i class="iconfont icon-shuaxin"></i>
+    </p>
+   <a href="/index.php?c=page&m=search&page=1"> <i class="iconfont icon-sousuo"></i></a>
+
+</header>
+
+
+<div class="popup ">
+    <div class="banner"></div>
+    <p>已加载好您感兴趣的头条</p>
+    <div class="download-btn" data-node="downloadBtn">立即打开</div>
+    <div class="close" data-node="close"></div>
+</div>
+
+
+<div class="daohang">
+    <ul class="daohang-left">
+       <?php foreach ($arry as $k=>$v){ ?>
+        <li class="<?php echo $v['id'] == $cid?'active':'' ?>">
+            <a href="/index.php?c=page&m=index&cid=<?php echo $v['id'] ?>&page=1">
+            <?php echo $v['name'] ?>
+            </a>
+       </li>
+        <?php }?>
+        <li></li>
+    </ul>
+
+
+    <div class="daohang-right">
+        <a href="/index.php?c=page&m=add">+</a></div>
+
+</div>
+
+
+<main>
+    <?php foreach($create as $k=>$v){ ?>
+
+    <div class="one">
+        <div class="one-left">
+            <p>
+                <?php echo $v['title'] ?>
+            </p>
+            <span class="zhiding"> 置顶</span>
+            <span>评论 98条</span>
+            <span>市南科普在线</span>
+
+        </div>
+            <div class="one-right">
+                <img src="<?php echo $v['image']?>" alt="">
+            </div>
+    </div>
+
+
+    <div class="two">
+
+            <p><?php echo $v['title'] ?></p>
+            <ul class="two-img">
+
+                <div class="img1"><img src="<?php echo $v['image']?>" alt=""></div>
+                <div class="img1"><img src="<?php echo $v['image']?>" alt=""></div>
+                <div class="img1"><img src="<?php echo $v['image']?>" alt=""></div>
+            </ul>
+            <div class="title">
+                <span>复兴军事</span>
+                <span>评论52条&nbsp;<?php echo $v['create_time']?></span>
+            </div>
+
+    </div>
+
+
+    <div class="three">
+        <p>
+            <?php echo $v['title'] ?>
+        </p>
+        <ul class="three-img">
+            <img src="<?php echo $v['image']?>" alt="">
+        </ul>
+        <div class="title">
+            <span class="guang">广告</span>
+            <span>山西汇翔-广汽三菱</span>
+            <span><?php echo $v['create_time']?></span>
+        </div>
+    </div>
+
+    <?php }?>
+</main>
+</body>
+<script src="/assets/js/index.js"></script>
+</html>
