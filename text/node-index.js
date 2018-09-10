@@ -42,13 +42,15 @@ function fetch_news(){
             let dsc = $(v).find('p').contents().eq(0).text();
             let image = $(v).find('img').attr('.src');
             let url = t.attr("href");
+
             if (filter.add(url)) {
                 urls.push(url);
                 newurl.push({
                     'title': title,
                     'dsc': dsc,
                     'image': image,
-                    'url': url
+                    'url': url,
+
                 })
             }
         });
@@ -76,8 +78,35 @@ function fetch_news(){
                         let dsc = v.dsc;
                         let image = v.image;
                         let url = v.url;
-                                let insert_sql = 'insert into news (title,dsc,url,image,create_time,content) values (?,?,?,?,?,?)';
-                                connection.query(insert_sql, [title, dsc,  url,image,pubtime, content], (err, results, fields) => {
+                        let r=Math.random()
+
+                        let cid
+                        if(r<0.1){
+                            cid=1;
+                        }else if (r<0.2){
+                            cid=2;
+                        } else if (r<0.3){
+                            cid=3;
+                        }else if (r<0.4){
+                            cid=4;
+                        }else if (r<0.5){
+                            cid=5;
+                        }else if (r<0.6){
+                            cid=6;
+                        }else if (r<0.6){
+                            cid=2;
+                        }else if (r<0.7){
+                            cid=7;
+                        }else if (r<0.8){
+                            cid=8;
+                        }else if (r<0.9){
+                            cid=9;
+                        }else if (r<0.1){
+                            cid=10;
+                        }
+                       let  type=cid
+                        let insert_sql = 'insert into news (cid,title,dsc,url,image,create_time,content) values (?,?,?,?,?,?,?)';
+                                connection.query(insert_sql, [ type,title, dsc,  url,image,pubtime, content], (err, results, fields) => {
                                     if (err) throw err;
                                     console.log(results.insertId);
                                 })
