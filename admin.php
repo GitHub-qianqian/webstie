@@ -23,6 +23,7 @@ class database{
 }
 
 class News extends database {
+     const  PER_PAGE=4;
     public function actiondelete(){
         echo $count=$this->pdo->exec("delete from  news where id = ".$_GET['id']);
     }
@@ -56,7 +57,7 @@ class News extends database {
 
     }
     public  function  actionview(){
-        $stmt = $this->pdo->query('select * from news');
+        $stmt = $this->pdo->query('select * from news ');
         $rows = $stmt->fetchAll();//返回值是一个数组
         include("HTML/admin.html");
     }
@@ -67,13 +68,20 @@ class News extends database {
         }else{
             $cid=1;
         }
+        if (isset($_GET['page'])) {
+            $page = $_GET['page'];
+        } else {
+            $page = 1;
+        }
+
+
 //总条数
         $num=$this->pdo->query("select count(*) as total from news ")->fetch()['total'];
-//总页数
-        $count=ceil($num/10) ;
 
+  //总页数
+        $page_total = ceil($num / $this::PER_PAGE);
 
-        $stmt = $this->pdo->query('select * from news limit 10');
+        $stmt = $this->pdo->query('select * from news limit 4');
         $rows = $stmt->fetchAll();//返回值是一个数组
         include("HTML/recommend.html");
 

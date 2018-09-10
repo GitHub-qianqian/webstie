@@ -75,23 +75,7 @@
 
 </script>
 
+<!--<script src="/assets2/piblic/admins.js"></script>-->
 
-<script src="/assets2/piblic/admins.js"></script>
-<script>
-
-    $(
-        function () {
-            $('#pagination-demo').twbsPagination({
-                totalPages: <?php echo $count?>,
-            visiblePages: 5,
-                onPageClick: function (event, page) {
-                $('#page-content').text('Page ' + page);
-
-            }
-
-        });
-        }
-    )
-</script>
 
 <?php include("footer.html")?>

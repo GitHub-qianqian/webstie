@@ -34,7 +34,26 @@
 </div>
 </body>
 
+
             <script src="/assets/js/app.min.js"></script>
 
+            <script src="/public/jquery.twbsPagination.min.js"></script>
+            <script>
 
+                $(
+                    function () {
+                        $('#pagination-demo').twbsPagination({
+                            totalPages: <?php echo $page_total?>,
+                        visiblePages: 5,
+                            startPage:<?php echo $page?>,
+                        onPageClick: function (event, page) {
+                            console.log(page);
+                            if(page != <?php echo $page?>){
+                                location.href="/admin.php?c=News&m=views&cid=<?php echo $cid?>&page="+page;
+                            }
+                        }
+                    });
+                    }
+                )
+            </script>
 </html>
